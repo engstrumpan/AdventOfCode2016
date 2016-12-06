@@ -6,8 +6,12 @@ namespace Advent_of_Code_2016
 {
     public static class Day5
     {
+        public static string Greeting = "--- Day 5: How About a Nice Game of Chess? ---";
+
         public static void Run()
         {
+            Puzzle.Greet(Greeting);
+
             var index = 0;
             const string input = "cxdnnyjw";
             var password = "";
@@ -37,8 +41,7 @@ namespace Advent_of_Code_2016
                 }
             }
 
-            Console.WriteLine($"Password: {password}");
-            Console.WriteLine($"Real Password: {string.Join("", realPassword)}");
+            Puzzle.Print($"Password: {password}", $"Real Password: {string.Join("", realPassword)}");
         }
 
         
@@ -48,15 +51,15 @@ namespace Advent_of_Code_2016
         {
 
             // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
+            var sBuilder = new StringBuilder();
 
             // Loop through each byte of the hashed data 
             // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
+            for (var i = 0; i < data.Length; i++)
             {
                 sBuilder.Append(data[i].ToString("x2"));
             }
